@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSwitchChallengeEngine } from '../../hooks/useSwitchChallengeEngine';
 import { TacticalHUD } from './TacticalHUD';
-import { Circle, Square, Triangle, Diamond, Star, Plus } from 'lucide-react';
+import { Circle, Square, Triangle, Diamond, Hexagon, Star, Octagon, Plus } from 'lucide-react';
 import './styles/SwitchChallenge.css';
 
 interface SwitchChallengeProps {
@@ -16,7 +16,9 @@ const SYMBOL_MAP: Record<string, any> = {
   Square: Square,
   Triangle: Triangle,
   Diamond: Diamond,
+  Hexagon: Hexagon,
   Star: Star,
+  Pentagon: Octagon,
   Cross: Plus
 };
 
@@ -44,16 +46,13 @@ export const SwitchChallenge = ({ onScore, onComplete, color: themeColor, score:
   const renderSymbol = (type: string, size = 32) => {
     const Icon = SYMBOL_MAP[type] || Circle;
     const color = COLOR_MAP[type] || '#fff';
-    
+
     return (
-      <div 
-        className="symbol-glyph-container" 
-        style={{ 
+      <div
+        className="symbol-glyph-container"
+        style={{
           color,
-          filter: `
-            drop-shadow(0 0 8px ${color}ee) 
-            drop-shadow(0 0 24px ${color}66)
-          ` // Authoritative high-intensity neon glow
+          filter: `drop-shadow(0 0 12px ${color}66)`
         }}
       >
         <Icon size={size} strokeWidth={1.5} fill="none" />
@@ -63,7 +62,7 @@ export const SwitchChallenge = ({ onScore, onComplete, color: themeColor, score:
 
   return (
     <div className="switch-challenge-container" style={{ '--primary-color': themeColor } as any}>
-      <TacticalHUD 
+      <TacticalHUD
         score={totalScore}
         level={level}
         timer={missionTimer}
@@ -99,8 +98,8 @@ export const SwitchChallenge = ({ onScore, onComplete, color: themeColor, score:
                 const wasActuallyCorrect = lastResult && !lastResult.isCorrect && lastResult.correctCode === code;
 
                 return (
-                  <button 
-                    key={code} 
+                  <button
+                    key={code}
                     className={`code-trigger ${isCorrect ? 'result-success' : ''} ${isWrong ? 'result-error' : ''} ${wasActuallyCorrect ? 'result-hint' : ''}`}
                     onClick={() => handleAnswer(code)}
                     disabled={isTransitioning}
@@ -121,7 +120,7 @@ export const SwitchChallenge = ({ onScore, onComplete, color: themeColor, score:
           <div className="symbol-matrix">
             <AnimatePresence mode="popLayout">
               {outputRow.map((node, i) => (
-                <motion.div 
+                <motion.div
                   key={node.id}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -133,7 +132,7 @@ export const SwitchChallenge = ({ onScore, onComplete, color: themeColor, score:
               ))}
             </AnimatePresence>
           </div>
-          
+
           <div className="sector-briefing">
             <h2 className="prompt-title">OUTPUT_SEQUENCE</h2>
             <span className="prompt-label">Verify Arrangement Protocol</span>
