@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from '../ui/Button';
 import { Menu, X, User, Trophy, Gamepad2, Mail } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
+
 
 import './Navbar.css';
 
