@@ -11,19 +11,14 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
-  loading: true,
+  user: { id: 'mock-user', email: 'alex.s@btech.edu' } as User,
+  loading: false,
   setUser: (user) => set({ user, loading: false }),
   signOut: async () => {
-    await supabase.auth.signOut();
     set({ user: null });
   },
   initialize: async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    set({ user: session?.user ?? null, loading: false });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      set({ user: session?.user ?? null, loading: false });
-    });
+    set({ user: { id: 'mock-user', email: 'alex.s@btech.edu' } as User, loading: false });
   },
 }));
+

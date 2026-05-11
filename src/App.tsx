@@ -11,15 +11,12 @@ import Navbar from './components/layout/Navbar';
 import { ProtectedRoute, PublicRoute } from './components/auth/AuthGuard';
 
 // Pages
-import LandingPage from './pages/landing/LandingPage';
 import GamesHub from './pages/games/GamesHub';
-import Dashboard from './pages/dashboard/Dashboard';
 import LeaderboardPage from './pages/leaderboard/LeaderboardPage';
-import LoginPage from './pages/auth/LoginPage';
-import SignupPage from './pages/auth/SignupPage';
 import ProfilePage from './pages/profile/ProfilePage';
 import GamePlay from './pages/games/GamePlay';
 import ContactPage from './pages/contact/ContactPage';
+
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
@@ -67,17 +64,17 @@ function App() {
       
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PublicRoute><PageWrapper><LandingPage /></PageWrapper></PublicRoute>} />
-          <Route path="/login" element={<PublicRoute><PageWrapper><LoginPage /></PageWrapper></PublicRoute>} />
-          <Route path="/signup" element={<PublicRoute><PageWrapper><SignupPage /></PageWrapper></PublicRoute>} />
-          
-          <Route path="/dashboard" element={<ProtectedRoute><PageWrapper><Dashboard /></PageWrapper></ProtectedRoute>} />
-          <Route path="/games" element={<ProtectedRoute><PageWrapper><GamesHub /></PageWrapper></ProtectedRoute>} />
-          <Route path="/games/:id" element={<ProtectedRoute><PageWrapper><GamePlay /></PageWrapper></ProtectedRoute>} />
-          <Route path="/leaderboard" element={<ProtectedRoute><PageWrapper><LeaderboardPage /></PageWrapper></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><PageWrapper><ProfilePage /></PageWrapper></ProtectedRoute>} />
+          <Route path="/" element={<PageWrapper><GamesHub /></PageWrapper>} />
+          <Route path="/games" element={<PageWrapper><GamesHub /></PageWrapper>} />
+          <Route path="/games/:id" element={<PageWrapper><GamePlay /></PageWrapper>} />
+          <Route path="/leaderboard" element={<PageWrapper><LeaderboardPage /></PageWrapper>} />
+          <Route path="/profile" element={<PageWrapper><ProfilePage /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+          
+          {/* Fallback */}
+          <Route path="*" element={<GamesHub />} />
         </Routes>
+
       </AnimatePresence>
     </div>
   );

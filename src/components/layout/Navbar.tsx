@@ -57,9 +57,10 @@ const Navbar = () => {
       <div className="nav-container">
         <div className={`nav-content ${scrolled ? 'nav-content-scrolled' : ''}`}>
           {/* Logo */}
-          <Link to={user ? "/dashboard" : "/"} className="nav-logo-link">
+          <Link to="/" className="nav-logo-link">
             <span className="logo-text">EVAL<span className="cursor-blink">_</span></span>
           </Link>
+
 
           {/* Desktop Nav */}
           <div className="nav-links-desktop">
@@ -81,11 +82,7 @@ const Navbar = () => {
                 <User className="profile-icon" />
               </Link>
             )}
-            {!user && !isAuthPage && (
-              <Link to="/login">
-                <Button className="login-nav-btn">LOG IN_</Button>
-              </Link>
-            )}
+
             <button 
               onClick={() => setIsOpen(!isOpen)}
               className="mobile-toggle-btn"
@@ -106,39 +103,27 @@ const Navbar = () => {
             className="mobile-menu"
           >
             <div className="mobile-menu-content">
-              {user ? (
-                <>
-                  {NAV_LINKS.map((link) => (
-                    <Link 
-                      key={link.path} 
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className="mobile-nav-link"
-                    >
-                      <link.icon className="mobile-link-icon" />
-                      {link.name}
-                    </Link>
-                  ))}
-                  <div className="mobile-divider" />
-                  <Link 
-                    to="/profile" 
-                    onClick={() => setIsOpen(false)}
-                    className="mobile-nav-link"
-                  >
-                    <User className="mobile-link-icon-muted" />
-                    Profile
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link to="/login" onClick={() => setIsOpen(false)} className="mobile-nav-link-bold">
-                    Login
-                  </Link>
-                  <Link to="/signup" onClick={() => setIsOpen(false)} className="mobile-nav-link-bold">
-                    Register
-                  </Link>
-                </>
-              )}
+              {NAV_LINKS.map((link) => (
+                <Link 
+                  key={link.path} 
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className="mobile-nav-link"
+                >
+                  <link.icon className="mobile-link-icon" />
+                  {link.name}
+                </Link>
+              ))}
+              <div className="mobile-divider" />
+              <Link 
+                to="/profile" 
+                onClick={() => setIsOpen(false)}
+                className="mobile-nav-link"
+              >
+                <User className="mobile-link-icon-muted" />
+                Profile
+              </Link>
+
             </div>
           </motion.div>
         )}

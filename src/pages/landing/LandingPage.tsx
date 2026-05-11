@@ -39,11 +39,12 @@ const LandingPage = () => {
                 Advanced cognitive assessments and brain training games designed for B.Tech students to test, improve and outperform.
               </p>
               <div className="hero-actions">
-                <Link to="/signup">
+                <Link to="/games">
                   <Button className="hero-btn">
                     START ASSESSMENT <ArrowRight className="btn-icon-right" />
                   </Button>
                 </Link>
+
                 <a href="#features" className="hero-explore-link">
                   EXPLORE PLATFORM <ArrowRight className="icon-down" />
                 </a>
@@ -202,11 +203,12 @@ const LandingPage = () => {
             </div>
             <div className="cta-action-area">
               <div className="cta-tagline">JOIN 12.4K+ ENGINEERS</div>
-              <Link to="/signup" className="w-full">
+              <Link to="/games" className="w-full">
                 <Button className="cta-btn">
                   START YOUR JOURNEY <ArrowRight className="btn-icon-right" />
                 </Button>
               </Link>
+
             </div>
           </div>
         </section>
