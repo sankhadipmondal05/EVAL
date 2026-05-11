@@ -8,7 +8,7 @@ import { useAuthStore } from './store/authStore';
 
 // Components
 import Navbar from './components/layout/Navbar';
-import { ProtectedRoute, PublicRoute } from './components/auth/AuthGuard';
+
 
 // Pages
 import GamesHub from './pages/games/GamesHub';
