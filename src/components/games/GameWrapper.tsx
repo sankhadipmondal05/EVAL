@@ -104,12 +104,14 @@ export const GameWrapper = ({ title, briefing, icon: Icon, color, rules, duratio
     if (isStarted && timeLeft > 0 && !isComplete) {
       timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
     } else if (timeLeft === 0 && !isComplete) {
-      handleComplete({ finalScore: score, timeSpent: 60, accuracy: 'N/A' });
+      handleComplete();
+
     }
     return () => clearInterval(timer);
   }, [isStarted, timeLeft, isComplete]);
 
-  const handleComplete = (_stats?: any) => {
+  const handleComplete = () => {
+
     if (score > bestScore) {
       setBestScore(score);
       localStorage.setItem(`best_score_${title}`, score.toString());

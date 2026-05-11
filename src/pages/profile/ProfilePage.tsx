@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Settings, Award, History, LogOut, ChevronRight, Calendar } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
+import { motion } from 'framer-motion';
+import { LogOut, ChevronRight, Calendar } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
+
+
+
 import { useAuthStore } from '../../store/authStore';
+
 import { useNavigate } from 'react-router-dom';
 import './ProfilePage.css';
 
