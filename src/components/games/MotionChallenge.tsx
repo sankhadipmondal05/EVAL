@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+
 import { TacticalHUD } from './TacticalHUD';
 import './styles/TacticalHUD.css';
 
