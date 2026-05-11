@@ -1,0 +1,113 @@
+/* Shared Tactical HUD for all assessment modules */
+
+.tactical-hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 100;
+}
+
+@media (min-width: 768px) {
+  .tactical-hud {
+    padding: 2rem;
+  }
+}
+
+.hud-group {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .hud-group {
+    gap: 3rem;
+  }
+}
+
+.status-node {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+@media (min-width: 768px) {
+  .status-node {
+    gap: 0.25rem;
+  }
+}
+
+.status-label {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .status-label {
+    font-size: 10px;
+  }
+}
+
+.status-value {
+  font-family: var(--font-pixel);
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .status-value {
+    font-size: 2.25rem;
+  }
+}
+
+.node-divider {
+  width: 1px;
+  height: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 768px) {
+  .node-divider {
+    height: 2.5rem;
+  }
+}
+
+.hud-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  pointer-events: auto;
+}
+
+.abort-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.abort-trigger:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.abort-label {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: #ef4444;
+  letter-spacing: 0.1em;
+}

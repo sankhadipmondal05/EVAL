@@ -1,0 +1,241 @@
+/* Authoritative Environment Reset */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: block;
+}
+
+/* Logical Grouping Container - matches GapChallenge pattern */
+.logical-grouping-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+@media (min-width: 768px) {
+  .logical-grouping-container {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+}
+
+/* Scrollable Gameplay Area */
+/* TacticalHUD is position:absolute, so mission-deck must clear it with padding-top */
+.mission-deck {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 6rem 1rem 8rem; /* 6rem top clears the absolute HUD on mobile */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+@media (min-width: 768px) {
+  .mission-deck {
+    height: auto;
+    overflow: visible;
+    justify-content: center;
+    gap: 4rem;
+    padding: 8rem 1rem 4rem; /* 8rem top clears HUD on desktop */
+    min-height: 100vh;
+  }
+}
+
+/* Custom Scrollbar */
+.mission-deck::-webkit-scrollbar { width: 4px; }
+.mission-deck::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
+
+/* Sector Containers */
+.analysis-sector, .stabilization-sector {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Section Labels */
+.deck-label {
+  font-family: var(--font-pixel);
+  font-size: clamp(9px, 2vw, 10px);
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+/* Grid Deck - Centered Architecture */
+.example-deck, .target-deck {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 140px));
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: center;
+  align-content: start;
+}
+
+@media (min-width: 768px) {
+  .example-deck, .target-deck {
+    grid-template-columns: repeat(auto-fit, 140px);
+    gap: 2.5rem;
+  }
+}
+
+/* Diamond Matrix Unit */
+.diamond-matrix-unit {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+.target-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.target-unit .diamond-matrix-unit {
+  height: 145px;
+}
+
+/* Diamond Grid */
+.diamond-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 90px;
+  height: 90px;
+  aspect-ratio: 1/1;
+  transform: rotate(45deg);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  margin-top: 12px; 
+}
+
+@media (max-width: 768px) {
+  .diamond-grid {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.diamond-cell {
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.cell-content {
+  transform: rotate(-45deg);
+}
+
+/* Group Indicator Branding */
+.group-tag {
+  margin-top: 2rem;
+  padding: 4px 10px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.tag-red {
+  background: rgba(217, 119, 87, 0.15);
+  color: #d97757;
+  border: 1px solid #d97757;
+}
+
+.tag-green {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid #10b981;
+}
+
+/* Classification Interaction */
+.classification-triggers {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.class-btn {
+  padding: 6px 14px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+}
+
+.class-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+
+.class-btn.active-red { background: #d97757; border-color: #d97757; color: #000; }
+.class-btn.active-green { background: #10b981; border-color: #10b981; color: #000; }
+
+.result-overlay {
+  position: absolute;
+  inset: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  border-radius: 4px;
+}
+
+.res-correct { color: #10b981; text-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+.res-wrong { color: #d97757; text-shadow: 0 0 10px rgba(217, 119, 87, 0.5); }

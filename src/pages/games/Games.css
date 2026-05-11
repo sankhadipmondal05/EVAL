@@ -1,0 +1,341 @@
+.games-hub-container {
+  min-height: 100vh;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem; /* Reduced for fuller mobile feel */
+  padding-right: 1rem;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.games-header {
+  margin-bottom: 3rem;
+  max-width: 72rem;
+  /* Increased from 48rem */
+}
+
+.games-title {
+  font-family: var(--font-pixel);
+  font-size: 1.9rem;
+  /* Recalibrated for better mobile presence */
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+@media (min-width: 768px) {
+  .games-title {
+    font-size: 3rem;
+  }
+}
+
+.games-title .hub-text {
+  color: var(--color-primary);
+}
+
+.games-subtitle {
+  font-family: var(--font-sans);
+  color: rgba(245, 245, 247, 0.6);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  max-width: 50rem;
+  /* Increased from 32rem */
+}
+
+.games-subtitle::before {
+  content: '> ';
+  color: var(--color-primary);
+}
+
+/* Grid Layout */
+.games-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Module Card */
+.game-card {
+  position: relative;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background-color: rgba(13, 13, 13, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card:hover {
+  background-color: rgba(20, 20, 20, 0.6);
+  border-color: rgba(217, 119, 87, 0.2);
+}
+
+.game-card.locked {
+  opacity: 0.5;
+  filter: grayscale(0.8);
+}
+
+/* Status Badge */
+.status-badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.status-ready {
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.status-locked {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Card Header */
+.module-info {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Visual Block (Icon/Wireframe) */
+.visual-block {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-brackets {
+  position: absolute;
+  inset: -10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.visual-brackets::before,
+.visual-brackets::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-style: solid;
+}
+
+.visual-brackets::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+
+.visual-brackets::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+.wireframe-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.module-icon-svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.game-card:hover .module-icon-svg {
+  transform: scale(1.1);
+}
+
+/* Content Block */
+.content-block {
+  flex: 1;
+}
+
+.module-id {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.module-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.module-desc {
+  font-size: 0.813rem;
+  line-height: 1.6;
+  color: rgba(245, 245, 247, 0.5);
+  margin-bottom: 0;
+  max-width: 20rem;
+}
+
+/* Meta Data Block */
+.meta-grid {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 2rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meta-label {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: rgba(245, 245, 247, 0.4);
+  text-transform: uppercase;
+}
+
+.meta-value {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.type-tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.type-tag {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: rgba(245, 245, 247, 0.6);
+  text-transform: uppercase;
+}
+
+/* Footer Action */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.execute-link {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s;
+}
+
+.execute-link:hover {
+  gap: 1.25rem;
+  opacity: 0.8;
+}
+
+.arrow-icon {
+  width: 14px;
+  height: 14px;
+  transform: rotate(-45deg);
+}
+
+.locked-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(245, 245, 247, 0.4);
+  font-family: var(--font-pixel);
+  font-size: 8px;
+}
+
+/* Mobile Responsive Overrides */
+@media (max-width: 767px) {
+  .game-card {
+    padding: 1.5rem;
+  }
+
+  .module-info {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .visual-block {
+    width: 80px; /* Scaled up from 60px */
+    height: 80px;
+  }
+
+  .module-title {
+    font-size: 1.25rem; /* Slightly larger for impact */
+  }
+
+  .module-desc {
+    max-width: 100%;
+    font-size: 0.875rem; /* Matched to desktop for readability */
+  }
+
+  .meta-grid {
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    min-width: 80px;
+  }
+
+  .card-footer {
+    flex-direction: row; /* Maintained horizontal layout */
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.locked-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}

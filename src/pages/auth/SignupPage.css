@@ -1,0 +1,8 @@
+@import './LoginPage.css';
+
+/* Signup specific overrides if any, otherwise reuse the auth classes */
+.signup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}

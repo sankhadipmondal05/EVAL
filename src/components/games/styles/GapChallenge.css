@@ -1,0 +1,184 @@
+.gap-recall-container {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+}
+
+.mission-deck {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 6rem; /* Pulled down as requested */
+}
+
+@media (min-width: 768px) {
+  .mission-deck {
+    margin-top: 2rem;
+  }
+}
+
+/* Analysis Grid Styling */
+.analysis-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 48rem;
+  padding: 0 1rem;
+}
+
+.deck-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.deck-title {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.deck-subtitle {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+/* The Grid - Unified Matrix */
+.gap-analysis-grid {
+  display: grid;
+  padding: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.01);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.grid-unit {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .grid-unit {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+
+.grid-unit.hidden-node {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.symbol-glyph {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Subtle glow protocol */
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+@media (min-width: 768px) {
+  .symbol-glyph {
+    width: 2.25rem;
+    height: 2.25rem;
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+}
+
+.gap-indicator {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+/* Palette Styling */
+.palette-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 30rem;
+  margin-top: 1.5rem;
+}
+
+.palette-trigger {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  .palette-trigger {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.palette-trigger:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.palette-trigger.trigger-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+}
+
+.palette-trigger.trigger-error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+.trigger-glyph {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+@media (min-width: 768px) {
+  .trigger-glyph {
+    width: 2.25rem;
+    height: 2.25rem;
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+}
